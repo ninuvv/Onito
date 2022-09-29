@@ -1,0 +1,9 @@
+-- api/v1/longest-duration-movies
+select A.tconst, primaryTitle, runtimeMinutes , genres from movies A inner join ratings B on A.tconst=B.tconst
+ order by runtimeMinutes desc  limit 10
+
+
+ 
+--  /api/v1/top-rated-movies 
+select A.tconst, primaryTitle, genres , averageRating from movies A inner join ratings B on A.tconst=B.tconst
+where averageRating>6 order by averageRating
