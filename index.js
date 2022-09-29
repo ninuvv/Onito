@@ -5,10 +5,14 @@ const cors = require("cors");
 const mysql = require("mysql2");
 const { application } = require("express");
 
+const dotenv=require("dotenv")
+dotenv.config()
+const dbpassword=process.env.password
+
 const db = mysql.createPool({
   host: "localhost",
   user: "root",
-  password: "Dhanyam@123",
+  password: dbpassword,
   database: "onito",
 });
 
