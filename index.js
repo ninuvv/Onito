@@ -67,42 +67,7 @@ app.post("/api/v1/new-movie", async (req, res) => {
 });
 //////////////////////
 
-app.post("/api/post", (req, res) => {
-  const { heading, description } = req.body;
-  const sql = `insert into todo(heading,description) values(?,?)`;
-  db.query(sql, [heading, description], (err, result) => {
-    console.log("error" + err);
-  });
-});
 
-app.delete("/api/remove/:id", (req, res) => {
-  const { id } = req.params;
-  const sqlRemove = `delete from todo where id= ?`;
-  db.query(sqlRemove, id, (err, result) => {
-    console.log("error" + err);
-  });
-});
-
-app.get("/api/get/:id", (req, res) => {
-  const { id } = req.params;
-  const sql = "select * from todo where id=?";
-  db.query(sql, id, (err, result) => {
-    res.send(result);
-    if (err) console.log(err);
-  });
-});
-
-app.put("/api/update/:id", (req, res) => {
-  const { id } = req.params;
-  const { heading, description, status, comment } = req.body;
-
-  const sql =
-    "update todo set heading=?,description=?,status=?,comment=? where id=?";
-  db.query(sql, [heading, description, status, comment, id], (err, result) => {
-    res.send(result);
-    if (err) console.log(err);
-  });
-});
 
 app.listen(5000, () => {
   console.log("Server is running on prt 5000");
