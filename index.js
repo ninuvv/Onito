@@ -59,10 +59,11 @@ app.post("/api/v1/new-movie", async (req, res) => {
 
   const sql=`insert into movies(tconst,titleType, primaryTitle,runtimeMinutes,genres) values(?,?,?,?,?)`;
   db.query(sql,[regno,titleType, primaryTitle,runtimeMinutes,genres],(err,result)=>{
-    console.log(err)
+   
       if(!err)
        res.send("Success")
-
+       else
+       console.log(err)
   })
 });
 //////////////////////
